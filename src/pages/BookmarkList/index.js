@@ -1,21 +1,14 @@
 import React from 'react';
 import {API} from "../../apiFactory";
 import News from "../../components/news";
-import {Col, Container, Row} from "reactstrap";
+import {Col, Container, Row, Spinner} from "reactstrap";
 import {connect} from "react-redux";
-import {removeFromBookmark} from "../../redux/newsBookmark/actions";
 
 class BookmarkList extends React.Component {
   constructor() {
     super();
     this.state = {articles: []};
     this.apiFactory = new API();
-  }
-
-  componentDidMount() {
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
   }
 
   render() {
@@ -34,7 +27,7 @@ class BookmarkList extends React.Component {
       </Container>
     } else {
 
-      return 'No Bookmark'
+      return <Spinner style={{width: '3rem', height: '3rem'}}/>
     }
   }
 }
@@ -46,6 +39,5 @@ const mapStateToProps = ({newsBookmark}) => {
 
 export default connect(
   mapStateToProps,
-  {
-  }
+  {}
 )(BookmarkList);

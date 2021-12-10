@@ -1,7 +1,7 @@
 import React from 'react';
 import {API} from "../../apiFactory";
 import News from "../../components/news";
-import {Col, Container, Row} from "reactstrap";
+import {Col, Container, Row, Spinner} from "reactstrap";
 
 class NewsList extends React.Component {
   constructor() {
@@ -19,8 +19,8 @@ class NewsList extends React.Component {
   }
 
   getNewsList = () => {
+    this.setState({articles: []})
     this.apiFactory.getNewsList(this.props.type).then(({data}) => {
-      console.log('data = ', data)
       this.setState({articles: data.articles})
     }).catch(e => {
     })
@@ -40,7 +40,7 @@ class NewsList extends React.Component {
       </Row>
     } else {
 
-      return 'NewsList'
+      return <Spinner style={{width: '3rem', height: '3rem'}}/>
     }
   }
 }
