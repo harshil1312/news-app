@@ -24,9 +24,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomeLayout/>}>
-              <Route exact path={`/news/headlines`} element={<NewsList type={'top-headlines?country=us'}/>}/>
-              <Route exact path={`/news/all`} element={<NewsList type={'everything?sources=abc-news'}/>}/>
-              <Route exact path={`/news/bookmarked`} element={<BookmarkList/>}/>
+              <Route path="/news">
+                <Route exact path={`/news/headlines`} element={<NewsList type={'top-headlines?country=us'}/>}/>
+                <Route exact path={`/news/all`} element={<NewsList type={'everything?sources=abc-news'}/>}/>
+                <Route exact path={`/news/bookmarked`} element={<BookmarkList/>}/>
+              </Route>
               <Route path="*" element={<Navigate to={`/news/headlines`}/>}/>
             </Route>
             <Route index element={<Navigate to={`/news/headlines`}/>}/>

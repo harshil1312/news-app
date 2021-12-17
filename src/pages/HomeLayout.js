@@ -44,13 +44,6 @@ function HomeLayout(props) {
               path.map(({name, href}, i) => {
                 return <NavItem key={i}>
                   <NavLink className="d-flex align-items-center nav-link"
-                        isActive={(match, location) => {
-                          if (!match) {
-                            return false;
-                          }
-                          return match.location.pathname === window.location.pathname;
-                        }}
-                        activeClassName="selected"
                         to={href}>{name} {name === 'Bookmarked' ?
                     <span className={'count-number'}>{articles && articles.length || 0}</span> : ''}
                   </NavLink>
